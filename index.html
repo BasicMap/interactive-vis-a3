@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Human Mortality Interactive visualization</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Mortality Interactive Visualizationr</h1>
+    <p>Interactive visualization of births by country and year</p>
+  </header>
+
+  <section id="controls">
+    <label for="country-select">Country:</label>
+    <select id="country-select"></select>
+
+    <label for="sex-toggle">Series:</label>
+    <select id="sex-toggle">
+      <option value="Total">Total</option>
+      <option value="Female">Female</option>
+      <option value="Male">Male</option>
+    </select>
+  </section>
+
+  <main id="views">
+    <div id="line-container">
+      <h2>Births over time</h2>
+      <div id="line-chart"></div>
+    </div>
+
+    <!-- Placeholder for a second view (e.g., bar chart, small multiples) -->
+    <div id="secondary-container">
+      <h2>Summary for selection (placeholder)</h2>
+      <div id="summary-panel">
+        <p>Select a country to see statistics here.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Your JS -->
+  <script src="script.js"></script>
+</body>
+</html>
