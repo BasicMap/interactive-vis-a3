@@ -4,3 +4,6 @@ CHANGE LOG
     Picking out dataset and playing with D3 to figure out what to visualize and how best to represent it.
     Chose dataset and wrote up first part of deliverable. 
     Starting implementing with D3 in index.html.
+    Very, very preliminary version started. Slider doesn't work. Country select works.
+    Next: look into aggregating average birth rates for all countries for initial view
+    

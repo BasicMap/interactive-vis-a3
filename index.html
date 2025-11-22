@@ -13,7 +13,7 @@
 
   <section id="controls">
     <label for="country-select">Country:</label>
-    <select id="country-select"></select>
+    <select id="country-select" multiple></select>
 
     <label for="sex-toggle">Series:</label>
     <select id="sex-toggle">
@@ -22,6 +22,11 @@
       <option value="Male">Male</option>
     </select>
   </section>
+
+    <label>Year range:</label>
+    <input id="year-min" type="range">
+    <input id="year-max" type="range">
+
 
   <main id="views">
     <div id="line-container">
@@ -38,9 +43,8 @@
     </div>
   </main>
 
-  <!-- D3 -->
+  <!-- D3 and js entry -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Your JS -->
   <script src="script.js"></script>
 </body>
 </html>
