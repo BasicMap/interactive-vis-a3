@@ -24,6 +24,10 @@ const g = svg
 const xScale = d3.scaleLinear().range([0, plotWidth]);
 const yScale = d3.scaleLinear().range([plotHeight, 0]);
 
+// Years
+const yearMinInput = d3.select("#year-min");
+const yearMaxInput = d3.select("#year-max");
+
 // Axes groups
 const xAxisG = g
   .append("g")
@@ -118,6 +122,45 @@ d3.text("data/Births.txt").then((rawText) => {
   countrySelect.property("value", initialCountry);
   updateLineChart(initialCountry, getSelectedSeries());
   updateSummary(initialCountry);
+
+    console.log("Parsed births records:", dataAll.length);
+
+  // Set up global year range for sliders
+  const globalMinYear = d3.min(dataAll, d => d.Year);
+  const globalMaxYear = d3.max(dataAll, d => d.Year);
+
+  yearMinInput
+    .attr("min", globalMinYear)
+    .attr("max", globalMaxYear)
+    .attr("value", globalMinYear);
+
+  yearMaxInput
+    .attr("min", globalMinYear)
+    .attr("max", globalMaxYear)
+    .attr("value", globalMaxYear);
+
+  // Change handlers for sliders
+  function onYearRangeChange() {
+    // Ensure min <= max (swap if needed)
+    let [ymin, ymax] = getYearRange();
+    if (ymin > ymax) {
+      const tmp = ymin;
+      ymin = ymax;
+      ymax = tmp;
+      yearMinInput.property("value", ymin);
+      yearMaxInput.property("value", ymax);
+    }
+
+    const selectedCountry = d3.select("#country-select").node().value;
+    updateLineChart(selectedCountry, getSelectedSeries());
+  }
+
+  yearMinInput.on("input", onYearRangeChange);
+  yearMaxInput.on("input", onYearRangeChange);
+
+  // Set up country list
+  countries = Array.from(new Set(dataAll.map((d) => d.PopName))).sort();
+
 });
 
 // Helper to get currently selected series (Total / Female / Male)
@@ -136,7 +179,7 @@ function updateSummary(country) {
   const avgTotal = d3.mean(subset, (d) => d.Total);
 
   d3.select("#summary-panel").html(`
-    <p><strong>${country}</strong></p>
+    <p>Country: ${country}</p>
     <p>Years available: ${minYear}–${maxYear}</p>
     <p>Average total births per year: ${Math.round(avgTotal).toLocaleString()}</p>
   `);
@@ -144,14 +187,16 @@ function updateSummary(country) {
 
 // Main line chart update function
 function updateLineChart(country, seriesKey) {
-  const subset = dataAll
-    .filter((d) => d.PopName === country)
-    .sort((a, b) => d3.ascending(a.Year, b.Year));
+  
+  const [yearMin, yearMax] = getYearRange();
 
-  if (subset.length === 0) {
-    console.warn("No data for country:", country);
-    return;
-  }
+  const subset = dataAll
+    .filter(d =>
+      d.PopName === country &&
+      d.Year >= yearMin &&
+      d.Year <= yearMax
+    )
+    .sort((a, b) => d3.ascending(a.Year, b.Year));
 
   // Update scales
   xScale.domain(d3.extent(subset, (d) => d.Year));

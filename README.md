@@ -3,10 +3,10 @@ Interactive visualization of a dataset using D3 library<br>
 Dataset in the 'data/' folder was downloaded from Human Mortality Dataset (HMD). I do not claim ownership over this dataset only the code to create a visualization in this repository.<br>
 
 # Instructions on how to run visualization locally
-Ensure you have Node.js http server installed globally npm: install -g http-server
-cd into the folder you downloaded this project into
-Start the server with: http-server -p 8000
-Open 'http://localhost:8000/' in your browser
+Ensure you have Node.js http server installed globally npm: install -g http-server<br>
+cd into the folder you downloaded this project into<br>
+Start the server with: http-server -p 8000<br>
+Open 'http://localhost:8000/' in your browser<br>
 
 
 ## 1. Design and Storyboarding
