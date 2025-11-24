@@ -6,4 +6,5 @@ CHANGE LOG
     Starting implementing with D3 in index.html.
     Very, very preliminary version started. Slider doesn't work. Country select works.
     Next: look into aggregating average birth rates for all countries for initial view
-    
+- 11.24.25:
+    Presenting dataset in class, getting feedback.

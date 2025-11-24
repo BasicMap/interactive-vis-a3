@@ -139,7 +139,6 @@ function updateSummary(country) {
     <p><strong>${country}</strong></p>
     <p>Years available: ${minYear}–${maxYear}</p>
     <p>Average total births per year: ${Math.round(avgTotal).toLocaleString()}</p>
-    <p>(You can replace this with a bar chart or another view later.)</p>
   `);
 }
 
