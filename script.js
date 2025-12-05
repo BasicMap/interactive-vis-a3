@@ -1,6 +1,6 @@
 // script.js
 
-console.log("script.js loaded");
+console.log("script.js – VERSION 7");
 
 // layout
 const margin = { top: 20, right: 20, bottom: 40, left: 60 };
@@ -58,6 +58,13 @@ const tooltip = d3
 // Global state
 let dataAll = [];
 let countries = [];
+
+// All datasets
+const datasetFiles = {
+  births: "data/Births.txt",
+  deaths: "data/Deaths.txt",
+  both: "data/Gender_Rates.txt",
+};
 
 // Load and parse HMD Births.txt
 d3.text("data/Births.txt").then((rawText) => {
@@ -141,7 +148,7 @@ d3.text("data/Births.txt").then((rawText) => {
 
   // Change handlers for sliders
   function onYearRangeChange() {
-    // Ensure min <= max (swap if needed)
+    
     let [ymin, ymax] = getYearRange();
     if (ymin > ymax) {
       const tmp = ymin;
@@ -168,7 +175,7 @@ function getSelectedSeries() {
   return d3.select("#sex-toggle").node().value;
 }
 
-// Update summary panel (placeholder for a more complex second view)
+// Update summary panel
 function updateSummary(country) {
   const subset = dataAll.filter((d) => d.PopName === country);
   if (subset.length === 0) return;
@@ -180,7 +187,7 @@ function updateSummary(country) {
 
   d3.select("#summary-panel").html(`
     <p>Country: ${country}</p>
-    <p>Years available: ${minYear}–${maxYear}</p>
+    <p>Years: ${minYear}–${maxYear}</p>
     <p>Average total births per year: ${Math.round(avgTotal).toLocaleString()}</p>
   `);
 }

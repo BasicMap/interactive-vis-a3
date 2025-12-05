@@ -21,6 +21,14 @@
       <option value="Female">Female</option>
       <option value="Male">Male</option>
     </select>
+    <label for="dataset-select">Dataset:</label>
+    <select id="dataset-select">
+    <option value="births">Births</option>
+    <option value="deaths">Deaths</option>
+    <option value="both">Both Genders</option>
+  
+</select>
+
   </section>
 
     <label>Year range:</label>
@@ -30,13 +38,13 @@
 
   <main id="views">
     <div id="line-container">
-      <h2>Births over time</h2>
+      <h2>Number of births over time</h2>
       <div id="line-chart"></div>
     </div>
 
     <!-- Placeholder for a second view (e.g., bar chart, small multiples) -->
     <div id="secondary-container">
-      <h2>Summary for selection</h2>
+      <h2>Summary Panel for Selected Country and Time Range</h2>
       <div id="summary-panel">
         <p>Select a country to see statistics here.</p>
       </div>

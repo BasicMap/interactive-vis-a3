@@ -1,4 +1,4 @@
-Faith Do, git CS333: Professor Jessica Hullman<br>
+Faith Do, CS333: Professor Jessica Hullman<br>
 Interactive visualization of a dataset using D3 library<br>
 Dataset in the 'data/' folder was downloaded from Human Mortality Dataset (HMD). I do not claim ownership over this dataset only the code to create a visualization in this repository.<br>
 
@@ -7,6 +7,7 @@ Ensure you have Node.js http server installed globally npm: install -g http-serv
 cd into the folder you downloaded this project into<br>
 Start the server with: http-server -p 8000<br>
 Open 'http://localhost:8000/' in your browser<br>
+Note: DO NOT click on either link posted in your terminal, it will take you to a different cached version of the visualization that is not reflective of the most recently committed code.
 
 
 ## 1. Design and Storyboarding
