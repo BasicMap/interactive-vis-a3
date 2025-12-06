@@ -1,100 +1,199 @@
+/* style.css – layout and visual styling */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  padding: 0;
-  background: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #f7f7fb;
   color: #222;
 }
 
 header {
-  padding: 16px 24px;
+  padding: 16px 24px 8px 24px;
   border-bottom: 1px solid #ddd;
-  background: #fff;
+  background: #ffffff;
 }
 
 header h1 {
-  margin: 0 0 4px;
+  margin: 0 0 6px 0;
   font-size: 1.5rem;
 }
 
 header p {
   margin: 0;
+  max-width: 720px;
+  font-size: 0.95rem;
+}
+
+main {
+  padding: 16px 24px 32px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Panels / sections */
+
+.panel {
+  background: #ffffff;
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 16px 18px 20px 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 1.25rem;
+}
+
+.panel p {
+  margin-top: 4px;
+  margin-bottom: 10px;
   font-size: 0.9rem;
+  max-width: 900px;
+}
+
+/* Controls */
+
+.controls-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.control-group {
+  min-width: 260px;
+}
+
+.control-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+#country-select {
+  min-width: 220px;
+  max-width: 260px;
+}
+
+.year-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.year-inputs > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.year-label {
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.hint {
+  margin-top: 6px;
+  font-size: 0.8rem;
   color: #555;
 }
 
-#controls {
+.local-controls {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  padding: 12px 24px;
-  border-bottom: 1px solid #eee;
-  background: #f7f7f7;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
 }
 
-#controls label {
+.local-controls label {
   font-weight: 500;
 }
 
-#controls select {
-  padding: 4px 6px;
+.control-label {
+  font-weight: 600;
+  margin-right: 4px;
 }
 
-#views {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px 24px 24px;
-}
+/* Charts */
 
-#line-container,
-#secondary-container {
-  flex: 1 1 400px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px 16px 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-#line-container h2,
-#secondary-container h2 {
-  margin-top: 0;
-  font-size: 1.1rem;
-}
-
-#line-chart {
-  width: 100%;
-  height: 400px;
+.chart-container {
+  margin-top: 4px;
+  overflow: hidden;
 }
 
 svg {
-  font-family: inherit;
+  max-width: 100%;
+  height: auto;
 }
+
+/* Axes and lines */
 
 .axis path,
 .axis line {
-  stroke: #777;
+  stroke: #999;
 }
 
 .axis text {
   font-size: 0.75rem;
-  fill: #444;
 }
 
-.line-path {
+.line-series {
   fill: none;
-  stroke-width: 2;
 }
 
-.grid line {
-  stroke: #eee;
+.life-line {
+  fill: none;
+  stroke-width: 2px;
 }
 
-.grid path {
-  stroke: none;
+/* Summary tables */
+
+.table-container {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  min-width: 420px;
+}
+
+.table-container caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #ddd;
+  padding: 4px 6px;
+  text-align: right;
+}
+
+.table-container th:first-child,
+.table-container td:first-child {
+  text-align: left;
+}
+
+/* Legend (if used) */
+
+.legend rect {
+  shape-rendering: crispEdges;
+}
+
+.legend-axis text {
+  font-size: 0.7rem;
+}
+
+.legend-axis path,
+.legend-axis line {
+  stroke: #999;
 }

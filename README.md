@@ -33,9 +33,16 @@ Screen 4: Multifaceted View<br>
 ## 2. Implementation
 View index.html, script.js, and style.css for implementation details. <br>
 
-## 3. Final writeup checklist
-Description of storyboards<br>
-Brief description of final visualization application<br>
+## 3. Final writeup 
+My final interactive visualization allows you to select which dataset you would like to view for certain statistics including: birth/death counts, birth/death rates, and population size. Demographics such as gender were also taken for these counts. I pivoted from my storyboard design a little bit to accomodate the different ways the datasets were outlined. As Prof. Hullman suggested during my progress presentation in class, it was more helpful to display each dataset as a separate interaction visual. The brushing for the year range is the main dyanmic interaction for the assignment, the default for it highlights the entire range but I promise if you click around it does work! <br> 
+For my comparative view from my storyboard, I included a bar chart below the line graph to display the average statistics over the selected time range to make it easier to compare. The mapping from positive marks a clean visual for the user to see (it is especially helpful if you use the United States against pretty much any other country). Below both these graphs are the summary statistics which gives the user the exact numbers displayed in the bar chart above with the average, minimum, and maximum. <br>
+Scrubbing from the datsets were a little difficult, but mostly managable. Some countries had data from the 1700s, but most didn't so I hard-coded the minimum to be 1900 since that was the year that most countries started having data in all the datasets I chose to visualize. The line graph looks more full and when comparing countries to each other is it easier to see the gaps between the lines and the amount of space between the bars. <br>
+One thing that is unclear that I did not have enough time to brush up on is the "Metric" selection. For death/birth *counts*, demographic data for gender was taken, and by selecting either option the summary statistics will change to reflect the data in the datasets. The shift in the line and bar charts sometimes seems negligible, but when you check the table it is clear that the desired data is being shown.<br>
+I worked on this probably an hour a day since the progress presentations, plus a few more on the day it was due. So give or take 15 hours? 
+
+## 4. Checklist
+Description of storyboards: ✅<br>
+Brief description of final visualization application: <br>
 Explanation of changes between storyboard and final result<br>
 Commentary on implementation process<br>
 Bundled code submission in working order<br>

@@ -2,56 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Human Mortality Interactive visualization</title>
+  <title>Human Mortality Interactive Visualization</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Mortality Interactive Visualizationr</h1>
-    <p>Interactive visualization of births by country and year</p>
+    <h1>Mortality Interactive Visualization</h1>
+    <p>
+      Interactive visualization of annual live births by country and year,
+      using data from the Human Mortality Database.
+    </p>
   </header>
 
+    <!-- CONTROL PANEL -->
   <section id="controls">
-    <label for="country-select">Country:</label>
-    <select id="country-select" multiple></select>
-
-    <label for="sex-toggle">Series:</label>
-    <select id="sex-toggle">
-      <option value="Total">Total</option>
-      <option value="Female">Female</option>
-      <option value="Male">Male</option>
-    </select>
-    <label for="dataset-select">Dataset:</label>
-    <select id="dataset-select">
-    <option value="births">Births</option>
-    <option value="deaths">Deaths</option>
-    <option value="both">Both Genders</option>
-  
-</select>
-
-  </section>
-
-    <label>Year range:</label>
-    <input id="year-min" type="range">
-    <input id="year-max" type="range">
+    <!-- DATASET TOGGLE -->
+    <div class="control-group">
+      <select id="dataset-select">
+        <option value="birthRates">View 1 – Birth rates (per 1,000 population)</option>
+        <option value="births">View 2 – Births (counts)</option>
+        <option value="deaths">View 3 – Deaths (counts)</option>
+        <option value="deathRates">View 4 – Death rates (per 1,000 population)</option>
+        <option value="femaleRates">View 5 – Female_Rates (life table mx)</option>
+        <option value="maleRates">View 6 – Male_Rates (life table mx)</option>
+        <option value="genderRates">View 7 – Gender_Rates (Both, life table mx)</option>
+        <option value="population">View 8 – Population (female / male / total)</option>
+      </select>
 
 
-  <main id="views">
-    <div id="line-container">
-      <h2>Number of births over time</h2>
-      <div id="line-chart"></div>
     </div>
 
-    <!-- Placeholder for a second view (e.g., bar chart, small multiples) -->
-    <div id="secondary-container">
-      <h2>Summary Panel for Selected Country and Time Range</h2>
-      <div id="summary-panel">
-        <p>Select a country to see statistics here.</p>
+    <!-- COUNTRY MULTI-SELECT -->
+    <div class="control-group">
+      <label for="country-select">Countries (multi-select):</label>
+      <select id="country-select" multiple></select>
+      <p class="hint">Use Ctrl/Cmd-click to select multiple countries.</p>
+    </div>
+
+    <!-- METRIC (TOTAL / FEMALE / MALE) -->
+    <div class="control-group">
+      <label>Metric:</label>
+      <div class="metric-options">
+        <label>
+          <input type="radio" name="metric" value="total" checked />
+          Total
+        </label>
+        <label>
+          <input type="radio" name="metric" value="female" />
+          Female
+        </label>
+        <label>
+          <input type="radio" name="metric" value="male" />
+          Male
+        </label>
       </div>
     </div>
+
+    <!-- YEAR RANGE (KEYBOARD INPUT + BRUSH) -->
+    <div class="control-group">
+      <label>Year range (keyboard input + brush):</label>
+      <div class="year-inputs">
+        <div>
+          <label for="year-min">Min year:</label>
+          <input type="number" id="year-min" />
+          <span id="year-min-label" class="year-label"></span>
+        </div>
+        <div>
+          <label for="year-max">Max year:</label>
+          <input type="number" id="year-max" />
+          <span id="year-max-label" class="year-label"></span>
+        </div>
+      </div>
+      <p class="hint">
+        Type years and press Enter or tab out to update, or brush directly on the chart.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- MAIN VIS LAYOUT -->
+  <main id="vis-layout">
+    <!-- PRIMARY VIEW: LINE CHART + BRUSH -->
+    <section id="view1-panel" class="panel">
+      <div class="view-grid">
+        <!-- LEFT COLUMN: Metric over Time -->
+        <div class="view-col">
+          <h2>Metric over Time (Line Chart with Brushing)</h2>
+          <div id="line-chart" class="chart-container"></div>
+        </div>
+
+        <!-- RIGHT COLUMN: Average Metric + Summary Statistics -->
+        <div class="view-col">
+          <h2>Average Metric in Selected Range (Linked View)</h2>
+          <div id="bar-chart" class="chart-container"></div>
+
+          <h3>Summary Statistics</h3>
+          <div id="summary-panel">
+            <p>
+              Select one or more countries and a year range to see summary statistics here.
+            </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- D3 and js entry -->
+  <!-- D3 and JS entry -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="script.js"></script>
 </body>
